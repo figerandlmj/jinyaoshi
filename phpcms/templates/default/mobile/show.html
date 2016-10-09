@@ -1,0 +1,33 @@
+{template "mobile","header_min"}
+<div class="content" style="background-color: #ebebeb">
+    <p class="detail-title">{$title}</p>
+    <div class="copyfrom">
+        <img src="phone/images/clock.png" alt="" width="11">
+        {date('H:m:s Y-m-d',$r[inputtime])}
+        <span class="fr">编辑：{$username}</span>
+    </div>
+    <div class="content" style="background-color: #ebebeb;margin-top: 1.8%;">
+        {if $thumb==""}
+        <img src="phone/images/default-img.jpg" alt="" width="100%">
+        {else}
+        <img src="{$thumb}" alt="" width="100%">
+        {/if}
+
+        <p class="description">{$description}</p>
+    </div>
+    <div class="details">
+       {$content}
+    </div>
+</div>
+<a href="{$next_page[url]}">
+    <div class="content" style="margin-top: 0;color: #666666">
+        <p>下一篇</p>
+        <p class="title-name" style="font-size: 14px">{$next_page[title]}</p>
+        <div class="time">
+            <img src="phone/images/clock.png" alt="" width="11">
+            {date('H:m:s Y-m-d',$next_page[inputtime])}
+
+        </div>
+    </div>
+</a>
+{template "mobile","footer"}

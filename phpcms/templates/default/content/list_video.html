@@ -1,0 +1,34 @@
+{template "content","header"}
+<div class="video-content">
+	<p class="video-content-link">
+		<a href="javascript:;"><span>首页</span></a>-<a href="javascript:;"><span>新闻动态</span></a>-<a href="javascript:;"><span>视频展示</span></a></p>
+</div>
+<div class="video-read">
+
+	{pc:content action="lists" num="9" catid="$catid" page="$page" order="listorder DESC,inputtime DESC "}
+	{loop $data $r}
+	<a href="{$r[url]}" target="_blank">
+		<div class="video-box fl">
+			<div class="video-read-img">
+				<img style="margin:4px 5px" src="{$r[thumb]}" width="320" height="240" />
+				<img class="movie-start" src="web/images/movie-start.png"/>
+			</div>
+			<span class="video-read-img-span fl">{$r[title]}</span>
+		</div>
+	</a>
+	{/loop}
+	{/pc}
+
+</div>
+{template "content","footer"}
+<script>
+
+	$('.video-read .video-box').eq(1).css({"margin-right":"50px"});
+	$('.video-read .video-box').eq(0).css({"margin-right":"50px"});
+	$('.video-read .video-box').eq(3).css({"margin-right":"50px","margin-top":"30px"});
+	$('.video-read .video-box').eq(4).css({"margin-right":"50px","margin-top":"30px"});
+	$('.video-read .video-box').eq(5).css({"margin-top":"30px"});
+	$('.video-read .video-box').eq(6).css({"margin-right":"50px","margin-top":"30px"});
+	$('.video-read .video-box').eq(7).css({"margin-right":"50px","margin-top":"30px"});
+	$('.video-read .video-box').eq(8).css({"margin-top":"30px"});
+</script>

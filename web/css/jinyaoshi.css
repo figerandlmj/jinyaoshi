@@ -1,0 +1,63 @@
+.member-li{
+    width: 100%;
+    background-color: #ffffff;
+    height: 220px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.member-img{
+    width: 30%;
+    height: 100%;
+    border-radius: 100px;
+    overflow: hidden;
+}
+.member-info{
+
+    width: 65%;
+    height: 100%;
+
+}
+.mt40{
+    margin-top: 40px;
+}
+.member-description{
+    margin-top: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    padding-right: 55px;
+    height: 120px;
+    overflow: hidden;
+}
+.brand-li{
+    background: url("../images/brand-bg.png") no-repeat;
+    width: 256px;
+    height: 256px;
+    display: inline-block;
+    _zoom:1;
+    *display:inline;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+
+    /*width: 25%;*/
+    /*height: 255px;*/
+    /*background-color: #ffffff;*/
+}
+.brand-focus{
+    position: absolute;
+    width: 256px;
+    height: 256px;
+    background: url("../images/brand-focus.png") no-repeat;
+    top: 0px;
+    left: 0;
+    overflow: hidden;
+    display: none;
+}
+.brand-info{
+    margin-top: 90px;
+    padding:  0 75px;
+
+    color: #ffffff;font-size: 12px;
+
+}

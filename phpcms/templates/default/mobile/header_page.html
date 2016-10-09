@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-itunes-app" content="app-id=580092746">
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate, max-age=0">
+    <title></title>
+    <link rel="stylesheet" href="phone/css/phone_base.css">
+    <link rel="stylesheet" href="phone/css/hx_phone.css">
+    <script src="phone/js/jquery-2.1.4.min.js"></script>
+    <script src="phone/js/dropload.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <!-- header-->
+    <header class="header pfixed">
+        <a href="{siteurl($siteid)}"><div class="left-arrow fl"></div></a>
+        {$catname}
+        <div class="fr right-menu" data-menu="0"></div>
+    </header>
+    <!-- end header-->
+    <!-- right-menu-->
+    <div class="menus hide">
+        <div class="mui-flex">
+            <a href="{$CATEGORYS[10]['url']}" class="cell">
+                <img src="phone/images/gongsi.png" alt="" height="18">
+                <p>{$CATEGORYS[10]['catname']}</p>
+            </a>
+            <a href="{$CATEGORYS[15]['url']}" class="cell">
+                <img src="phone/images/zhaopin.png" alt="" height="18">
+                <p>{$CATEGORYS[15]['catname']}</p>
+            </a>
+        </div>
+        <div class="mui-flex">
+            <a href="{$CATEGORYS[11]['url']}" class="cell">
+                <img src="phone/images/chanpin.png" alt="" height="18">
+                <p>{$CATEGORYS[11]['catname']}</p>
+            </a>
+            <a href="{$CATEGORYS[13]['url']}" class="cell">
+                <img src="phone/images/zhiliang.png" alt="" height="18">
+                <p>{$CATEGORYS[13]['catname']}</p>
+            </a>
+        </div>
+        <div class="mui-flex">
+            <a href="{$CATEGORYS[26]['url']}" class="cell">
+                <img src="phone/images/xinwen.png" alt="" height="18">
+                <p>{$CATEGORYS[12]['catname']}</p>
+            </a>
+            <a href="javascript:;" class="cell">
+                <!--<img src="phone/images/shebei.png" alt="" height="18">-->
+                <!--<p>{$CATEGORYS[14]['catname']}</p>-->
+            </a>
+        </div>
+    </div>
+    <!-- end right menu-->

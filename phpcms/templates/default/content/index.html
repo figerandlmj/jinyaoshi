@@ -1,0 +1,529 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+    <meta name="keywords" content="{$SEO['keyword']}">
+    <meta name="description" content="{$SEO['description']}">
+    <link rel="stylesheet" href="web/css/base.css" style="text/css">
+    <link rel="stylesheet" href="web/css/unslide.css" style="text/css">
+    <script src="web/js/jquery-1.11.3.min.js" language="javascript"></script>
+    <script src="web/js/unslider.js" language="javascript"></script>
+    <style>
+        .nav-child div{
+            background: url("web/images/top.png") repeat;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<!--导航栏-->
+<div class="top" style="z-index:999">
+    <div class="header">
+        <div class="w1100">
+            <a href="{siteurl($siteid)}"> <div class="logo ab"></div></a>
+
+            {pc:content action="category" catid="0" num="8" siteid="$siteid" order="listorder ASC"}
+            <ul class="fr h100 mt-0" style="z-index: 22">
+
+                <li class="nav-li nav-focus" data-highlight="1">
+                    <a href="{siteurl($siteid)}">
+                        <div class="nav-font">首页</div>
+                    </a>
+                </li>
+
+                {loop $data $r}
+                {if $r[child]}
+                <li class="nav-li">
+                    <a href="javascript:;">
+                        <span class="nav-font">{$r[catname]}</span>
+                    </a>
+                        {pc:content action="category" catid="$r['catid']" num="5" siteid="$siteid" order="listorder ASC"}
+                        <ul class="bg-edeced hide nav-child">
+                            {loop $data $rr}
+                            <li class="nav-child-li"><a href="{$rr[url]}">{$rr[catname]}</a></li>
+                            {/loop}
+                        </ul>
+                        {/pc}
+
+                </li>
+
+                {else}
+                <li class="nav-li"><a href="{$r[url]}"><span class="nav-font">{$r[catname]}</span></a></li>
+                {/if}
+                {/loop}
+            </ul>
+            {/pc}
+            </ul>
+        </div>
+    </div>
+    <!--左侧-->
+    <div class="left-side">
+        <form action="index.php?m=content&c=index&a=addplan" method="post">
+
+            <div class="arrow" >
+                <p class="arrow-title">今日已有<span class="arrow-title-span" id="num" ></span>人获取装修方案
+                </p>
+                <div class="arrow-content">
+                    <input class="arrow-square arrow-font" type="text" name="area" placeholder="建筑面积 m2" />
+                    <select class="arrow-square fl City_select" name="city_name">
+                        <option value="">选择小区</option>
+                    </select>
+                    <input class="arrow-square arrow-font" name="name" type="text" placeholder="姓名" />
+                    <input class="arrow-square arrow-font" name="phone" type="text" placeholder="手机号" />
+                <span style="color:#a0a0a0;font-size:14px;padding:6px" class="fl">装修风格
+            </span>
+
+                    <select class="arrow-square Style_select" name="style_name">
+                        <option value="">选择风格</option>
+                    </select>
+
+                    <input class="submit btn_plan" type="submit" value="获取方案"/>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <!--banner轮播区-->
+    <div class="banner" style="width: 100%;height: 640px;min-width:1100px;margin-top:-65px;z-index:-1">
+        <ul>
+            {pc:content action="lists" num="5" catid="36" order="listorder DESC"}
+            {loop $data $r}
+            <li style="position:relative">
+                <a  href="{$r[url]}" title="{$r[title]}" style="background: url({$r[thumb]}) no-repeat center center;width: 100%;height: 100%;display: block;">
+                </a>
+            </li>
+            {/loop}
+            {/pc}
+        </ul>
+    </div>
+</div>
+<!--中间内容-->
+<div class="content-top">
+    <div class="first-img fl">
+        <div class="first-img focus">
+           <div style="padding: 10px;text-align: center;font-size: 16px;">
+               {$CATEGORYS[45][description]}
+           </div>
+        </div>
+    </div>
+    <div class="first-img second-img fl">
+        <div class="first-img focus">
+            <div style="padding: 10px;text-align: center;font-size: 16px;">
+                {$CATEGORYS[46][description]}
+            </div>
+        </div>
+    </div>
+    <div class="first-img third-img fl">
+        <div class="first-img focus">
+            <div style="padding: 10px;text-align: center;font-size: 16px;">
+                {$CATEGORYS[47][description]}
+            </div>
+        </div>
+    </div>
+    <div class="first-img fourth-img fl">
+        <div class="first-img focus">
+            <div style="padding: 10px;text-align: center;font-size: 16px;">
+                {$CATEGORYS[48][description]}
+            </div>
+        </div>
+    </div>
+    <div class="first-img fiveth-img fl">
+        <div class="first-img focus">
+            <div style="padding: 10px;text-align: center;font-size: 16px;">
+                {$CATEGORYS[49][description]}
+            </div>
+        </div>
+    </div>
+    <div class="first-img sixth-img fl">
+        <div class="first-img focus">
+            <div style="padding: 10px;text-align: center;font-size: 16px;">
+                {$CATEGORYS[50][description]}
+            </div>
+        </div>
+    </div>
+    <div class="big-Title-one fl">
+        <img src="web/images/font.png" />
+    </div>
+</div>
+<div class="news-banner fl">
+    <div class="News-title">
+        <a href="{$CATEGORYS[41][url]}"><p class="red-more"></p></a>
+    </div>
+    <div class="News-img">
+        <div class="fl" style="width:540px;">
+            {pc:content action="lists" num="1" catid="43" order="listorder DESC ,inputtime DESC" moreinfo="1"}
+            {loop $data $r}
+
+            <embed src="{$r[video_url]}" quality="high" width="400" height="250" align="middle" allowScriptAccess="always" allowFullScreen="true" mode="transparent" type="application/x-shockwave-flash"></embed>
+             <p class="fl">{$r[title]}</p>
+            <a href="{$r[url]}" target="_blank">
+                <input class="fl" type="button" value="MORE >"/>
+            </a>
+            {/loop}
+            {/pc}
+        </div>
+        <div class="News-right fr">
+            {pc:content action="lists" catid="34" num="3" order="listorder DESC"}
+            {loop $data $r}
+            <a href="{$r[url]}" target="_blank">
+                <div class="News-content fl">
+                    <div style="width:68px;height:80px;" class="fl">
+                        <label class="fl">{date('d',$r[inputtime])}</label>
+                        <span class="fl">{date('Y-m',$r[inputtime])}</span>
+                    </div>
+                    <div class="content-news fl">
+                        <p class="content-news-title">{$r[title]}</p>
+
+                        <p class="content-news-span">{$r[description]}</p>
+                    </div>
+                </div>
+            </a>
+            {/loop}
+            {/pc}
+
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="abundant fl">
+    <div class="News-title abundant-title">
+        <a href="javascript:;"><p class="red-more"></p></a>
+    </div>
+    <div class="abundant-center">
+        <img class="abundant-img fl" src="web/images/img1.png" />
+        <img class="abundant-img fl" src="web/images/img2.png" />
+        <img class="abundant-img fl" src="web/images/img3.png" />
+        <img class="abundant-img fl" src="web/images/img4.png" />
+        <img class="abundant-img fl" src="web/images/img5.png" />
+        <img class="abundant-img fl" src="web/images/img6.png" />
+        <img class="abundant-img fl" src="web/images/img7.png" />
+        <img class="abundant-img fl" src="web/images/img8.png" />
+        <img class="abundant-img fl" src="web/images/img9.png" />
+        <img class="abundant-img fl" src="web/images/img10.png" />
+        <img class="abundant-img fl" src="web/images/img11.png" />
+        <img class="abundant-img fl" src="web/images/img12.png" />
+        <img class="abundant-img fl" src="web/images/img13.png" />
+    </div>
+    <div class="abundant-p fl">
+        <img src="web/images/third.png?v=20160215" />
+    </div>
+    <div class="abundant-middle">
+        <img class="abundant-pic fl" src="web/images/oushi.png" />
+        <img class="abundant-pic fl" src="web/images/meishi.png" />
+        <img class="abundant-pic fl" src="web/images/zhongshi.png" />
+        <img class="abundant-pic fl" src="web/images/xingudian.png" />
+        <img class="abundant-pic fl" src="web/images/xiandai.png" />
+        <img class="abundant-pic fl" src="web/images/houxiandai.png" />
+        <img class="abundant-pic fl" src="web/images/xiandaijiayue.png" />
+        <img class="abundant-pic fl" src="web/images/dongnanya.png" />
+    </div>
+</div>
+<!--banner2-->
+<div class="banner2 fl"></div>
+<div class="coorpate fl">
+    <a href="{$CATEGORYS[37][url]}">
+        <div class="coorpate-title">
+            <p class="red-more"></p>
+        </div>
+    </a>
+    <!--菱形-->
+    <div style="width: 100%;height: 686px;">
+        <div class="wrap " >
+            <div class="coorpate-img">
+                {pc:content action="lists" num="4" catid="37" order="listorder DESC"}
+                {loop $data $r}
+                <div class="coorpate-box fl">
+                    <div class="coorpate-one" style="background: url({$r[thumb]})">
+                    </div>
+                    <div class="coorpate-bg fl">
+                        <span>{$r[title]}</span>
+                    </div>
+                </div>
+                {/loop}
+                {/pc}
+                {pc:content action="lists" num="1" catid="37" order="listorder DESC limit 4,1--"}
+                {loop $data $r}
+                <div class="coorpate-box coorpate-box2 fl" style="background: url({$r[thumb]});">
+                    <div class="coorpate-five" style="background: url({$r[thumb]});"> </div>
+                    <div class="coorpate-bg">
+                        <span>{$r[title]}</span>
+                    </div>
+                </div>
+                {/loop}
+                {/pc}
+                {pc:content action="lists" num="1" catid="37" order="listorder DESC limit 5,1--"}
+                {loop $data $r}
+                <div class="coorpate-box coorpate-box3 fl" style="background: url({$r[thumb]});">
+                    <div class="coorpate-six" style="background: url({$r[thumb]});"></div>
+                    <div class="coorpate-bg">
+                        <span>{$r[title]}</span>
+                    </div>
+                </div>
+                {/loop}
+                {/pc}
+                {pc:content action="lists" num="1" catid="37" order="listorder DESC limit 6,1--"}
+                {loop $data $r}
+                <div class="coorpate-box coorpate-box4 fl"  style="background: url({$r[thumb]});">
+                    <div class="coorpate-seven"  style="background: url({$r[thumb]});"></div>
+                    <div class="coorpate-bg">
+                        <span>{$r[title]}</span>
+                    </div>
+                </div>
+                {/loop}
+                {/pc}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!--优秀团队-->
+<div class="group fl">
+    <div class="group-title">
+        <a href="{$CATEGORYS[38][url]}"><p class="red-more"></p></a>
+    </div>
+    <div class="group-content">
+        {pc:content action="lists" catid="38" num="4" order="listorder DESC" moreinfo="1"}
+        {loop $data $r}
+        <a href="{$r[url]}">
+            <div class="group-img fl">
+                <img class="group-images" src="{$r[thumb]}" />
+                <p class="img-title">{$r[title]}</p>
+                <p class="img-span">{$r[position]}</p>
+                <p class="img-p">{$r[description]}</p>
+            </div>
+        </a>
+        {/loop}
+        {/pc}
+    </div>
+</div>
+</div>
+<div class="contact fl">
+    <div class="contact-title">
+        <a href="javascript:;"><p class="red-more"></p></a>
+    </div>
+    <div class="contact-center">
+        <div class="contact-div1 fl">
+            <div class="div1-content">
+                <img src="web/images/telephone.png" />
+                <p class="tel-title">电话</p>
+                <p class="tel-p">0553-3855888</p>
+                <p class="tel-p">我们的工作时间8:30-5:30</p>
+            </div>
+        </div>
+        <div class="contact-div1 fl">
+            <div class="div1-content">
+                <img src="web/images/email.png" />
+                <p class="tel-title">邮箱</p>
+                <p class="tel-p">jysgcd@163.com</p>
+                <p class="tel-p">jysgcd@163.com</p>
+            </div>
+        </div>
+        <div class="contact-div1 fl">
+            <div class="div1-content-l">
+                <img src="web/images/address.png" />
+                <p class="tel-title">地址</p>
+                <p class="tel-p">安徽省 芜湖市 镜湖区</p>
+                <p class="tel-p">欧亚达正元家居一楼C厅</p>
+            </div>
+        </div>
+    </div>
+    <!--悬浮-->
+    <div class="float fr" >
+        <div class="float-top">
+            <img style="padding: 8px 10px;"src="web/images/float-top.png" />
+        </div>
+        <div class="float-bottom">
+            <img style="padding: 8px 10px;" src="web/images/float-middle.png"/>
+        </div>
+        <img class="float-last" src="web/images/bottom.png"/>
+    </div>
+</div>
+<!--footer-->
+<div class="bottom fl">
+    <div class="bottom-center ">
+        <div class="bottom-div">
+            <ul class="div-content">
+                <a href="javascript:;"><li class="div-font">关于我们</li></a>
+                <a href="{$CATEGORYS[38][url]}" target="_blank"><li class="div-span">团队介绍</li></a>
+                <a href="{$CATEGORYS[37][url]}" target="_blank"><li class="div-span">合作品牌</li></a>
+            </ul>
+        </div>
+
+        <span class="lines fl"></span>
+        <div class="bottom-div1">
+            <ul class="div-content">
+
+                <a href="javascript:;"><li class="div-font">友情链接</li></a>
+                {pc:content action="lists" num="7" catid="52" order="listorder DESC,inputtime DESC"}
+                {loop $data $r}
+                <a href="{$r[url]}" target="_blank"><li class="div-span">{$r[title]}</li></a>
+                {/loop}
+                {/pc}
+            </ul>
+        </div>
+        <span class="lines fl"></span>
+        <div class="bottom-div1">
+            <ul class="div-content">
+
+                <a href="javascript:;"><li class="div-font">新闻动态</li></a>
+                <a href="{$CATEGORYS[41][url]}" target="_blank"><li class="div-span">公司新闻</li></a>
+                <a href="{$CATEGORYS[43][url]}" target="_blank"><li class="div-span">视频展示</li></a>
+            </ul>
+        </div>
+        <span class="lines fl"></span>
+        <div class="bottom-div1">
+            <ul class="div-content">
+                <li class="div-font">最新优惠</li>
+                {pc:content action="lists" num="7" catid="31" order="listorder DESC,inputtime DESC"}
+                {loop $data $r}
+                <a href="{$r[url]}" target="_blank"><li class="div-span1">{$r[title]}</li></a>
+                {/loop}
+                {/pc}
+            </ul>
+        </div>
+        <span class="lines fl"></span>
+        <div class="bottom-div2 fl" >
+            <p class="bottom-span">手机网站</p>
+            <img class="weixin fl" src="web/images/weixin.png"/>
+            <a href="javascript:;"><img class="icon fl"src="web/images/icon.png" /></a>
+            <a href="javascript:;"><img class="icon fl"src="web/images/icon1.png" /></a>
+            <a href="javascript:;"><img class="icon fl"src="web/images/icon2.png" /></a>
+        </div>
+    </div>
+</div>
+<div class="footer fl">
+    <p class="footer-center">Copyright © 2016金钥匙装饰 皖ICP备10011451号-6 技术支持 <a href="http://www.zmit.cn" target="_blank">中梦科技</a></p>
+</div>
+</body>
+<script type="text/javascript" src="web/js/float.js"></script>
+<script type="text/javascript">
+
+    $('.nav-li').hover(function(){
+        $(this).find('.nav-child').show();
+        $(this).addClass('nav-focus');
+    },function(){
+        $(this).find('.nav-child').hide();
+        if(!$(this).data('highlight')) {
+            $(this).removeClass('nav-focus');
+        }
+    });
+
+    $('.nav-child-li').hover(function(){
+
+        $(this).addClass("nav-focus");
+    },function(){
+        $(this).removeClass("nav-focus");
+    });
+    $(function(){
+        $(window).scroll(function() {
+            if($(window).scrollTop() >= 100){ //向下滚动像素大于这个值时，即出现小火箭~
+                $('.float').fadeIn(300); //火箭淡入的时间，越小出现的越快~
+            }else{
+                $('.float').fadeOut(300); //火箭淡出的时间，越小消失的越快~
+            }
+        });
+        $('.float').click(function(){$('html,body').animate({scrollTop: '0px'}, 800);}); //火箭动画停留时间，越小消失的越快~
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        //hover事件
+        $(".hover-event").hover(function(){
+            $(this).find(".hover-go").toggle();
+        });
+
+
+    })
+    //  banner
+    if (window.chrome) {
+        $('.banner li').css('background-size', '100% 100%');
+    }
+
+    $('.banner').unslider({
+        arrows: false,
+        fluid: true,
+        dots:true
+    });
+    $('.coorpate-box').hover(function(){
+        // $(this).find('.coorpate-one').hide();
+        $(this).find('.coorpate-bg').show();
+    },function(){
+        $(this).find('.coorpate-bg').hide();
+        // $(this).find('.coorpate-one').show();
+    });
+
+
+
+    //ajax获取今日记录
+    var siteurl = '{siteurl($siteid)}';
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=get_today",
+        success:function(data){
+
+
+            $('#num').html(data);
+        },
+        error: function(err){
+            alert("Ajax error!");
+        }
+    });
+
+    //ajax 加载小区
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=getcity",
+        success:function(data){
+            var length=data.length;
+            for(var i=0;i<length;i++){
+                var html = "<option id='city_id" + data[i].id + "'value='" + data[i].city_name + "' >" + data[i].city_name + "</option>";
+                $(".City_select").append(html);
+            }
+        },
+        error: function(err){
+            alert("Ajax error!");
+        }
+    });
+
+    //ajax 加载装修风格
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=getstyle",
+        success:function(data){
+            var length=data.length;
+            for(var i=0;i<length;i++){
+                var html = "<option id='style_id" + data[i].id + "'value='" + data[i].style_name + "' >" + data[i].style_name + "</option>";
+                $(".Style_select").append(html);
+            }
+        },
+        error: function(err){
+            alert("Ajax error!");
+        }
+    });
+
+    //浮动
+    $("#float").float({offset : {left : 0}});
+
+    $('.first-img').hover(function(){
+        $(this).find('.focus').show();
+    },function(){
+        $(this).find('.focus').hide();
+    });
+
+</script>
+<!--视频-->
+
+</html>

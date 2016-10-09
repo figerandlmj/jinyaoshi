@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+    <meta name="keywords" content="{$SEO['keyword']}">
+    <meta name="description" content="{$SEO['description']}">
+    <link rel="stylesheet" href="web/css/base.css" style="text/css">
+    <script src="web/js/jquery.min.js" language="javascript"></script>
+    <link rel="stylesheet" href="web/css/jinyaoshi.css">
+</head>
+<body>
+<!-- head-->
+<div class="vedio-top"></div>
+<div class="vedio-head">
+    <div class="video-head-center">
+        <img  class="fl" style="padding-top:25px;" src="web/images/logo1.png" />
+        <div class="tel fr">
+            <img class="fl" src="web/images/tel.png" />
+            <!-- <span class="number">000-888888</span> -->
+            <p class="number">早上8:30至晚上5:30</p>
+        </div>
+    </div>
+</div>
+<div class="our_top">
+    <div class="menu">
+        <div class="w1100">
+
+
+            {pc:content action="category" catid="0" num="8" siteid="$siteid" order="listorder ASC"}
+            <ul class="fl h100 mt-0" style="z-index: 22">
+
+                <li class="nav-li " data-highlight="0">
+                    <a href="{siteurl($siteid)}">
+                        <div class="nav-font">首页</div>
+                    </a>
+                </li>
+
+                {loop $data $r}
+                {if $r[child]}
+                <li class="nav-li {if $catid==$r[catid] || $top_parentid==$r[catid]}nav-focus{/if}"data-highlight="{if $catid==$r[catid] || $top_parentid==$r[catid]}1{else}0{/if}">
+                    <a href="javascript:;">
+                        <span class="nav-font">{$r[catname]}</span>
+                    </a>
+                    {pc:content action="category" catid="$r['catid']" num="5" siteid="$siteid" order="listorder ASC"}
+                    <ul class="bg-edeced hide nav-child">
+                        {loop $data $rr}
+                        <li class="nav-child-li"><a href="{$rr[url]}">{$rr[catname]}</a></li>
+                        {/loop}
+                    </ul>
+                    {/pc}
+
+                </li>
+
+                {else}
+                <li class="nav-li {if $catid==$r[catid] || $top_parentid==$r[catid]}nav-focus{/if}"><a href="{$r[url]}" data-highlight="{if $catid==$r[catid] || $top_parentid==$r[catid]}1{else}0{/if}"><span class="nav-font">{$r[catname]}</span></a></li>
+                {/if}
+                {/loop}
+            </ul>
+            {/pc}
+            </ul>
+            <img class="fr" src="web/images/menu.png" />
+        </div>
+
+    </div>
+</div>
+<!--end head-->

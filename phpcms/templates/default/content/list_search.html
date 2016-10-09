@@ -1,0 +1,265 @@
+{template 'content', 'header'}
+
+<div class="home-banner">
+    <div class="home-banner-center">
+        <form action="?index.php&m=content&c=index&a=search" method="post">
+            <div class="home-banner-border fl">
+                <input class="border-content fl" type="text" name="q" placeholder="输入小区名查找其案例、小区服务团队" />
+
+                <input class="orange-span fr search-btn"  type="submit" value="立即查找">
+
+            </div>
+        </form>
+        <div class="border-right fr">
+            <p class="arrow-title">今日已有
+                <span class="arrow-title-span" id="num"></span>人获取装修方案</p>
+            <div class="arrow-content">
+                <input class="arrow-square1" type="text" name="area" placeholder="建筑面积 m2"/>
+
+
+                <select class="arrow-square1 City_select" name="city_id">
+                    <option value="">选择小区</option>
+                </select>
+
+                <input class="arrow-square1" type="text" name="name" placeholder="姓名"/>
+                <input class="arrow-square1" type="text" name="phone" placeholder="手机号"/>
+                <span style="color:#fff;font-size:14px;padding:6px" class="fl">装修风格</span>
+
+
+                <select class="arrow-square1 fl Style_select" name="style_id">
+                    <option value="">选择风格</option>
+                </select>
+
+                <input class="submit btn_plan" type="submit" value="获取方案"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!--中间内容-->
+<div class="z-taocan-contact">
+    <div class="z-taocan-content">
+        <div class="home-left fl">
+            <div class="home-left-one">
+                <!--{php $sql="select arrchildid from jys_category where catid=$catid ";}-->
+
+                <span id="city_num"></span>
+
+                <span class="home-left-one-span fl">小区数</span>
+            </div>
+
+            <input class="input btn_alert" type="button" value="+添加小区">
+            <p class="input-bottom">欢迎添加您的小区，以便我们提供更多的精品案例。
+            </p>
+        </div>
+        <!--右边-->
+        <div class="home-right fl">
+            <div class="home-right">
+
+                <?php
+
+ 				foreach($info as $value){
+ 				?>
+
+                <div class="home-right-top">
+                    <div class="right-top-one">
+                        <div class="home-img fl" style="background: url(<?php echo $value['thumb'] ?>);background-size: 100%"></div>
+                        <div class="right-top-two fl" style="position: relative;">
+                            <p class="top-two-title"><?php echo $value['title'] ?></p>
+                            <div class="top-two-title-span">
+                                <img style="padding-top:8px" src="web/images/orange-address.png" />
+                                <span class="top-two-title-span"><?php echo $value['address'] ?></span>
+                            </div>
+                            <p class="top-two-title-span">
+                                <img src="web/images/blue-man.png" />
+                                <span class="top-two-title-span"><?php echo $value['population'] ?>人</span>
+                            </p>
+                            <div class="add_city_btn fr red-border" >+ 加入小区</div>
+                            <img src="<?php echo $value['code'] ?>" alt="" class="city_code fr" style="display: none" width="164" height="164" >
+                        </div>
+                    </div>
+                    <div class="right-top-bottom fl">
+                        <img class="fl" src="<?php echo $value['pic1'] ?>" width="164" height="164" />
+                        <img class="fl" src="<?php echo $value['pic2'] ?>" width="164" height="164" />
+                        <img class="fl" src="<?php echo $value['pic3'] ?>" width="164" height="164" />
+
+                    </div>
+                </div>
+                <?php
+ 				}
+ 			?>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{template 'content', 'footer'}
+
+<script>
+    //弹框事件
+    $('.btn_alert').click(function(){
+
+        if(!$('.mask').data('open')){
+
+            $('.mask').show();
+            $('.mask').data("open",1);
+
+        }
+        else{
+            $('.mask').hide();
+            $('.mask').data("open",0);
+        }
+
+    });
+    $('.add_city_btn').hover(function(){
+        $(this).next().show();
+    },function(){
+        $(this).next().hide();
+    });
+
+    //ajax添加小区
+    var siteurl = 'http://www.jysgcd.com';
+//    var siteurl = '{siteurl($siteid)}';
+
+    $('.btn_add').click(function(){
+
+        var city_name = $('[name="city_name"]').val();
+
+
+        $.ajax({
+
+            type :"POST",
+            dataType: "json",
+            url: siteurl+"/index.php?m=content&c=index&a=add_city",
+            data:{
+
+                city_name: city_name,
+
+            },
+            success:function(data){
+
+                alert(data.content);
+                $('.mask').hide();
+                $('.mask').data("open",0);
+            },
+            error: function(err){
+                alert("Ajax error!");
+            }
+        });
+
+    });
+
+    //ajax获取今日记录
+
+
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=get_today",
+        success:function(data){
+
+
+            $('#num').html(data);
+        },
+        error: function(err){
+            alert("Ajax error!");
+        }
+    });
+
+    //ajax获取小区数
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=get_city_num",
+        success:function(data){
+
+
+
+            var length=data.length;
+            for(var i=0;i<length;i++){
+                $('#city_num').html(data[i].num);
+            }
+
+
+
+        },
+        error: function(err){
+            alert("Ajax error!");
+        }
+    });
+
+    //ajax 加载小区
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=getcity",
+        success:function(data){
+            var length=data.length;
+            for(var i=0;i<length;i++){
+                var html = "<option id='city_id" + data[i].id + "'value='" + data[i].city_name + "' >" + data[i].city_name + "</option>";
+                $(".City_select").append(html);
+            }
+        },
+        error: function(err){
+            alert("Ajax error!");
+        }
+    });
+
+    //ajax 加载装修风格
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=getstyle",
+        success:function(data){
+            var length=data.length;
+            for(var i=0;i<length;i++){
+                var html = "<option id='style_id" + data[i].id + "'value='" + data[i].style_name + "' >" + data[i].style_name + "</option>";
+                $(".Style_select").append(html);
+            }
+        },
+        error: function(err){
+            alert("Ajax error!");
+        }
+    });
+
+    //ajax提交数据
+
+    $('.btn_plan').click(function(){
+
+        var area = $('[name="area"]').val();
+        var city_id = $('[name="city_id"]').val();
+        var name = $('[name="name"]').val();
+        var phone = $('[name="phone"]').val();
+        var style_id = $('[name="style_id"]').val();
+
+        $.ajax({
+
+            type :"POST",
+            dataType: "json",
+            url: siteurl+"/index.php?m=content&c=index&a=addplan",
+            data:{
+                area: area,
+                city_name: city_id,
+                name: name,
+                phone: phone,
+                style_name: style_id,
+
+            },
+            success:function(data){
+                alert("success");
+                console.log(data);
+            },
+            error: function(err){
+                alert("Ajax error!");
+            }
+        });
+
+    });
+</script>

@@ -1,0 +1,116 @@
+{template "content","header"}
+<style>
+    body{
+        background-color: #f4f4f4;
+    }
+</style>
+<!--min-banner-->
+<div class="min-banner"></div>
+<!-- end min banner-->
+<!--主内容-->
+<div class="w1100" style="min-height: 965px;">
+    <!-- left 部分-->
+    <div class="left-wrap fl">
+        <!-- category-->
+        <div class="category">
+            <ul>
+                <a href="{$CATEGORYS[$top_parentid][url]}"><li class="category-focus">{$CATEGORYS[$top_parentid][catname]}</li></a>
+                {loop subcat($CATEGORYS[$top_parentid][catid]) $r}
+                <a  href="{$r[url]}"><li class="{if $catid==$r[catid]}category-focus{/if}">{$r[catname]}</li></a>
+                {/loop}
+            </ul>
+        </div>
+        <!-- end category-->
+        <!-- 联系我们-->
+        <div class="category-connect">
+            <div class="connect-title category-focus">
+                <span class="ml20">联系我们</span>
+            </div>
+            <div class="connect-text">
+                <div class="text-list">
+                    <span class="company-name fl">名称：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">芜湖恒信汽车内饰制造有限公司</span>
+                </div>
+                <div class="text-list mt10">
+                    <span class="company-name fl">地址：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">芜湖市经济开发区凤鸣湖北路26路</span>
+                </div>
+                <div class="text-list mt10" style="height: 16px;">
+                    <span class="company-name fl">电话：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">0553-5842035-8000</span>
+                </div>
+                <div class="text-list mt10" style="height: 16px;">
+                    <span class="company-name fl">传真：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">0553-5843473</span>
+                </div>
+                <div class="text-list mt10" style="height: 16px;">
+                    <span class="company-name fl">邮编：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">241009</span>
+                </div>
+            </div>
+        </div>
+        <!-- end 联系我们-->
+        <!-- 快速通道-->
+        <div class="channel-category">
+            <a href="http://www.anhuihx.com/scm" class="channel-list">
+                <div class="channel-category-list bg-white">
+                    <span class="car-icon"></span>
+                    <span class="channel-name font-989898">供应商入口</span>
+                </div>
+            </a>
+            <a href="http://www.anhuihx.com/mail" class="channel-list">
+                <div class="channel-category-list bg-white">
+                    <span class="car-icon mail-icon"></span>
+                    <span class="channel-name font-989898">企业邮箱</span>
+                </div>
+            </a>
+            <a href="http://www.anhuihx.com/oa" class="channel-list">
+                <div class="channel-category-list bg-white">
+                    <span class="car-icon e-icon"></span>
+                    <span class="channel-name font-989898">网络系统</span>
+                </div>
+            </a>
+            <a href="http://www.anhuihx.net/" class="channel-list">
+                <div class="channel-category-list bg-white">
+                    <span class="car-icon hx-icon"></span>
+                    <span class="channel-name font-989898">合肥恒信</span>
+                </div>
+            </a>
+        </div>
+        <!-- end 快速通道-->
+    </div>
+    <!-- end left部分-->
+    <!-- right 部分-->
+    <div class="right-wrap fr bg-white" style="min-height: 860px">
+        <div class="right-content" style="padding-right: 29px;">
+            <!-- index-->
+            <div class="index">
+                <span>您的位置:</span>
+                <a href="">首页</a>
+                <a ><span> >></span>{catpos($catid)} 列表</a>
+            </div>
+            <!-- end index -->
+            <!-- 列表-->
+            <div class="list-product-wrap mt25">
+                {pc:content action="lists" catid="$catid" num="16" order="listorder DESC " page="$page"}
+                {loop $data $r}
+                <a href="{$r[url]}">
+                    <div class="list-product fl ml40">
+                        <img src="{$r[thumb]}" alt="" width="171" height="129">
+                        <p class="product-name">{$r[title]}</p>
+                    </div>
+                </a>
+                {/loop}
+                {/pc}
+            </div>
+            <!-- end 列表-->
+            <!-- page-->
+            <div id="pages" class="text-c fl" style="padding-bottom: 78px;">
+                {$pages}
+            </div>
+        </div>
+    </div>
+    <!-- end right 部分-->
+</div>
+<!--end 主内容-->
+{template "content","footer"}

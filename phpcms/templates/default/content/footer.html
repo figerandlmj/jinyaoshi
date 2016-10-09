@@ -1,0 +1,135 @@
+<!--底部-->
+<div class="our_contact fl">
+    <div class="contact-center1">
+        <div class="contact-div1 fl">
+            <div class="div1-content">
+                <img src="web/images/telephone.png" />
+                <p class="tel-title">电话</p>
+                <p class="tel-p">0553-3855888</p>
+                <p class="tel-p">我们的工作时间8:30-5:30</p>
+            </div>
+        </div>
+        <div class="contact-div1 fl">
+            <div class="div1-content">
+                <img src="web/images/email.png" />
+                <p class="tel-title">邮箱</p>
+                <p class="tel-p">jysgcd@163.com</p>
+                <p class="tel-p">jysgcd@163.com</p>
+            </div>
+        </div>
+        <div class="contact-div1 fl">
+            <div class="div1-content-l">
+                <img src="web/images/address.png" />
+                <p class="tel-title">地址</p>
+                <p class="tel-p">安徽省 芜湖市 镜湖区</p>
+                <p class="tel-p">欧亚达正元家居一楼C厅</p>
+            </div>
+        </div>
+    </div>
+    <!--悬浮-->
+    <div class="float fr" >
+        <div class="float-top">
+            <img style="padding: 8px 10px;"src="web/images/float-top.png" />
+        </div>
+        <div class="float-bottom">
+            <img style="padding: 8px 10px;" src="web/images/float-middle.png"/>
+        </div>
+        <img class="float-last" src="web/images/bottom.png"/>
+    </div>
+</div>
+<!--footer-->
+<div class="bottom fl">
+    <div class="bottom-center ">
+        <div class="bottom-div">
+            <ul class="div-content">
+                <a href="javascript:;"><li class="div-font">关于我们</li></a>
+                <a href="{$CATEGORYS[38][url]}" target="_blank"><li class="div-span">团队介绍</li></a>
+                <a href="{$CATEGORYS[37][url]}" target="_blank"><li class="div-span">合作品牌</li></a>
+            </ul>
+        </div>
+
+        <span class="lines fl"></span>
+        <div class="bottom-div1">
+            <ul class="div-content">
+
+                <a href="javascript:;"><li class="div-font">友情链接</li></a>
+                {pc:content action="lists" num="7" catid="52" order="listorder DESC,inputtime DESC"}
+                {loop $data $r}
+                <a href="{$r[url]}" target="_blank"><li class="div-span">{$r[title]}</li></a>
+                {/loop}
+                {/pc}
+            </ul>
+        </div>
+        <span class="lines fl"></span>
+        <div class="bottom-div1">
+            <ul class="div-content">
+
+                <a href="javascript:;"><li class="div-font">新闻动态</li></a>
+                <a href="{$CATEGORYS[41][url]}" target="_blank"><li class="div-span">公司新闻</li></a>
+                <a href="{$CATEGORYS[43][url]}" target="_blank"><li class="div-span">视频展示</li></a>
+            </ul>
+        </div>
+        <span class="lines fl"></span>
+        <div class="bottom-div1">
+            <ul class="div-content">
+                <li class="div-font">最新优惠</li>
+                {pc:content action="lists" num="7" catid="31" order="listorder DESC,inputtime DESC"}
+                {loop $data $r}
+                <a href="{$r[url]}" target="_blank"><li class="div-span1">{$r[title]}</li></a>
+                {/loop}
+                {/pc}
+            </ul>
+        </div>
+        <span class="lines fl"></span>
+        <div class="bottom-div2 fl" >
+            <p class="bottom-span">手机网站</p>
+            <img class="weixin fl" src="web/images/weixin.png"/>
+            <a href="javascript:;"><img class="icon fl"src="web/images/icon.png" /></a>
+            <a href="javascript:;"><img class="icon fl"src="web/images/icon1.png" /></a>
+            <a href="javascript:;"><img class="icon fl"src="web/images/icon2.png" /></a>
+        </div>
+    </div>
+</div>
+<div class="footer fl">
+    <p class="footer-center">Copyright © 2016金钥匙装饰 皖ICP备10011451号-6 技术支持 <a class="support" href="http://www.zmit.cn" target="_blank">中梦科技</a></p>
+</div>
+</body>
+<script type="text/javascript" src="web/js/float.js"></script>
+<script type="text/javascript">
+    //子栏目
+    $('.nav-li').hover(function(){
+        $(this).find('.nav-child').show();
+        $(this).addClass('nav-focus');
+    },function(){
+        $(this).find('.nav-child').hide();
+        if(!$(this).data('highlight')) {
+            $(this).removeClass('nav-focus');
+        }
+    });
+    $('.nav-child-li').hover(function(){
+
+        $(this).addClass("nav-focus");
+    },function(){
+        $(this).removeClass("nav-focus");
+    });
+
+    $(function(){
+        $(window).scroll(function() {
+            if($(window).scrollTop() >= 100){ //向下滚动像素大于这个值时，即出现小火箭~
+                $('.float').fadeIn(300); //火箭淡入的时间，越小出现的越快~
+            }else{
+                $('.float').fadeOut(300); //火箭淡出的时间，越小消失的越快~
+            }
+        });
+        $('.float').click(function(){$('html,body').animate({scrollTop: '0px'}, 800);}); //火箭动画停留时间，越小消失的越快~
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        //hover事件
+        $(".hover-event").hover(function(){
+            $(this).find(".hover-go").toggle();
+        })
+    })
+</script>
+</html>

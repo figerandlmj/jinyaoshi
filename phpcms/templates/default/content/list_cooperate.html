@@ -1,0 +1,103 @@
+{template "content","header"}
+<div class="video-content">
+    <p class="video-content-link">
+        <a href="javascript:;"><span>首页 > </span></a>{catpos($catid)} 列表
+    </p>
+</div>
+
+<!--内容-->
+<div style="width: 1100px;margin: 0 auto">
+
+    <div class="txt" style="padding-top:15px;padding-left: 10px;padding-right: 10px;padding-bottom: 65px;">
+
+        <ul style="margin-top: -128px;">
+            {pc:content action="lists" num="4" catid="$catid" order="listorder DESC,inputtime DESC"}
+            {loop $data $r}
+            <a href="{$r[url]}">
+                <li class="brand-li">
+                    <img src="{$r[thumb]}" style="margin-top: 65px;" alt="" width="120" height="120">
+                    <div class="brand-focus">
+                        <div class="brand-info">
+                            {$r[description]}
+                        </div>
+                    </div>
+                </li>
+            </a>
+            {/loop}
+            {/pc}
+        </ul>
+        <ul style="margin-top: -128px;" class="brand-wrap">
+            {pc:content action="lists" num="3" catid="$catid" order="listorder DESC,inputtime DESC limit 4,3--"}
+            {loop $data $r}
+            <a href="{$r[url]}">
+                <li class="brand-li">
+                    <img src="{$r[thumb]}" style="margin-top: 65px;" alt="" width="120" height="120">
+                    <div class="brand-focus">
+                        <div class="brand-info">
+                            {$r[description]}
+                        </div>
+                    </div>
+                </li>
+            </a>
+            {/loop}
+            {/pc}
+        </ul>
+
+        {pc:content action="lists" num="4" catid="$catid" order="listorder DESC,inputtime DESC limit 7,4--"}
+        <ul style="margin-top: -128px;">
+            {loop $data $r}
+            <a href="{$r[url]}">
+                <li class="brand-li">
+                    <img src="{$r[thumb]}" style="margin-top: 65px;" alt="" width="120" height="120">
+
+                    <div class="brand-focus">
+                        <div class="brand-info">
+                            {$r[description]}
+                        </div>
+                    </div>
+                </li>
+            </a>
+            {/loop}
+        </ul>
+        {/pc}
+
+
+        {pc:content action="lists" num="3" catid="$catid" order="listorder DESC,inputtime DESC limit 11,3--"}
+        <ul style="margin-top: -128px;" class="brand-wrap2">
+            {loop $data $r}
+            <a href="{$r[url]}">
+                <li class="brand-li">
+                    <img src="{$r[thumb]}" style="margin-top: 65px;" alt="" width="120" height="120">
+
+                    <div class="brand-focus">
+                        <div class="brand-info">
+                            {$r[description]}
+                        </div>
+                    </div>
+                </li>
+            </a>
+            {/loop}
+        </ul>
+        {/pc}
+
+
+
+    </div>
+
+</div>
+<!--end内容-->
+
+{template "content","footer"}
+<script>
+
+    $('.txt ul').eq(0).css({"margin-top":"0"});
+    $('.brand-wrap li').eq(0).css({"margin-left":"132px"});
+    $('.brand-wrap2 li').eq(0).css({"margin-left":"132px"});
+    //品牌hover
+    $('.brand-li').hover(function(){
+        $(this).find(".brand-focus").show();
+
+    },function(){
+        $(this).find(".brand-focus").hide();
+    });
+</script>

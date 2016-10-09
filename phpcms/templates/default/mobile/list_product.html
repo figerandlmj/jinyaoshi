@@ -1,0 +1,76 @@
+{template "mobile","header_min"}
+<div class="content">
+    {pc:content action="lists" catid="$catid" num="6" order="listorder DESC " page="$page"}
+    {loop $data $r}
+    <a href="{$r[url]}" class="newListBox">
+        <div class="list">
+            {if $r[thumb]==''}
+            <img src="phone/images/default-img.jpg" alt="" width="30%">
+            {else}
+            <img src="{$r[thumb]}" alt="" width="30%">
+            {/if}
+            <div class="list-right fr">
+                <div class="title-name">{$r[title]}</div>
+            </div>
+            <div class="date">
+                <img src="phone/images/clock.png" alt="" width="11">
+                {date('H:m:s Y-m-d',$r[inputtime])}
+            </div>
+        </div>
+    </a>
+    {/loop}
+    {/pc}
+    <!-- page-->
+    <!--<div id="pages" class="text-c fl">{$pages}</div>-->
+    <div class="last"></div>
+</div>
+{template "mobile","footer"}
+<script>
+
+    var catid = '{$catid}';
+    var siteurl = '{siteurl($siteid)}';
+    $(function(){
+        $('.content').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                var last_id = $(".newListBox").length;
+                $.ajax({
+                    type: 'GET',
+                    url: siteurl+'/index.php?m=content&c=index&a=ajax_more_product&catid='+catid,
+                    dataType: 'json',
+                    data:{
+                        catid:catid,
+                        id:last_id
+                    },
+                    success: function(data){
+//                        console.log(data);
+                        var html = '';
+                        for(var i=0;i<data.length;i++){
+                            var p = data[i].thumb;
+                            if(p==""){
+                                html += '<a class="newListBox" href="'+ data[i].url + '"><div class="list"><img src="phone/images/default-img.jpg" alt="" width="30%"><div class="list-right fr "><div class="title-name">'+data[i].title+'</div></div><div class="date"><img src="phone/images/clock.png" alt="" width="11">'+data[i].inputtime+'</div></div></a>';
+
+                            }
+                            else{
+                                html += '<a class="newListBox" href="'+ data[i].url + '"><div class="list"><img src="'+data[i].thumb+'" alt="" width="30%"><div class="list-right fr "><div class="title-name">'+data[i].title+'</div></div><div class="date"><img src="phone/images/clock.png" alt="" width="11">'+data[i].inputtime+'</div></div></a>';
+
+                            }
+                        }
+                        setTimeout(function(){
+                            $(".last").before(html);
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        },1000)
+
+                    },
+                    error: function(xhr, type){
+                        alert('Ajax error!');
+                        // 即使加载出错，也得重置
+                        me.resetload();
+                    }
+                });
+            }
+        });
+    });
+
+</script>

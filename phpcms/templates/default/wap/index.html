@@ -1,0 +1,59 @@
+{template "wap","header"}
+<!-- banner -->
+<div class="banner" style="width: 100%;margin-top: 48px;">
+    {pc:content action="lists" catid="9" num="5" siteid="$siteid" order="listorder ASC"}
+    <ul>
+        {loop $data $r}
+        <li>
+            <a href="{$r[url]}" style="width: 100%;height: 100%;display: block;position: relative;">
+                <img src="{$r[thumb]}" width="100%" height="auto" alt="{$r[title]}"/>
+                <a href="{$r[url]}">
+                <div class="more-btn"></div>
+                </a>
+            </a>
+        </li>
+        {/loop}
+    </ul>
+    {/pc}
+</div>
+<!-- end banner-->
+<!--快速通道-->
+<div class="channel">
+    <ul class="mui-flex">
+        <li class="channel-li cell" id="supplier">
+            <a  href="">
+                <img src="phone/images/supplier.png" alt="" width="70">
+            </a>
+        </li>
+        <li class="channel-li cell" id="internet">
+            <a  href="">
+                <img src="phone/images/internet.png" alt="" width="70">
+            </a>
+        </li>
+        <li class="channel-li cell" id="mail">
+            <a  href="">
+                <img src="phone/images/mail.png" alt="" width="70">
+            </a>
+        </li>
+        <li class="channel-li cell" id="hengxin">
+            <a href="">
+                <img src="phone/images/hengxin.png" alt="" width="70">
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- end 快速通道-->
+<!-- 产品系列-->
+<div class="products">
+    <a href="{$CATEGORYS[16]['url']}">
+        <img src="phone/images/nav1.jpg" alt="" width="100%">
+    </a>
+    <a href="{$CATEGORYS[17]['url']}">
+        <img src="phone/images/nav2.jpg" alt="" width="100%">
+    </a>
+    <a href="{$CATEGORYS[11]['url']}">
+        <img src="phone/images/nav3.jpg" alt="" width="100%">
+    </a>
+</div>
+<!-- end 产品系列-->
+{template "wap","footer"}

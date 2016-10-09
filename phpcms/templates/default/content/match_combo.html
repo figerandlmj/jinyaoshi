@@ -1,0 +1,151 @@
+{template "content","header"}
+<!--中间内容-->
+<div class="Introduce">
+    <div class="Introduce-center">
+        <div class="video-content">
+            <p class="video-content-link">
+                <a href="javascript:;"><span>首页 > 套餐介绍 </span></a> 列表</p>
+        </div>
+        <div class="Introduce-top">
+            <img class="img-r fl" src="web/images/oushi.png"/>
+            <img class="img-r fl" src="web/images/meishi.png"/>
+            <img class="img-r fl" src="web/images/zhongshi.png"/>
+            <img class="img-r fl" src="web/images/xingudian.png"/>
+            <img class="img-r fl" src="web/images/xiandai.png"/>
+            <img class="img-r fl" src="web/images/houxiandai.png"/>
+            <img class="img-r fl" src="web/images/xiandaijiayue.png"/>
+            <img class="abundant-pic fl" src="web/images/dongnanya.png"/>
+        </div>
+        <div style="width:823px;height:1740px" class="fl">
+
+            <?php
+
+             foreach($combos as $value){
+             ?>
+                <div class="Introduce-middle fl " style="margin-top: 20px;">
+            <img class="Introduce-middle-img fl" src="<?php echo $value['thumb'] ?>" width="412" height="309" alt="<?php echo $value['title'] ?>"
+                 title="<?php echo $value['title'] ?>"/>
+
+            <div class="Introduce-middle-right fl">
+                <a href="javascript:;"><p class="Introduce-middle-right-title"><?php echo $value['title'] ?></p></a>
+
+                <p class="Introduce-middle-right-span"><?php echo $value['description'] ?></p>
+
+                <p class="hana-span fl"><a href="javascript:;" data-comboid="<?php echo $value['id'] ?>" class="agree"> <img src="web/images/hand.png"/></a>
+                    <span class="hind"><?php echo $value['agree_num'] ?></span></p>
+                <a href="<?php echo $value['url'] ?>" target="_blank">
+                    <div class="look fr">查看详情</div>
+                </a>
+            </div>
+        </div>
+
+          <?php   }
+
+             ?>
+        </div>
+        <div class="Introduce-arrow fr">
+            <form action="index.php?m=content&c=index&a=addplan" method="post">
+                <div class="arrow fl">
+                    <p class="arrow-title">今日已有<span class="arrow-title-span" id="num"></span>人获取装修方案
+                    </p>
+
+                    <div class="arrow-content">
+                        <input class="arrow-square1" type="text" name="area" placeholder="建筑面积 m2"/>
+
+
+                        <select class="arrow-square1 City_select" name="city_name">
+                            <option value="">选择小区</option>
+                        </select>
+
+                        <input class="arrow-square1" type="text" name="name" placeholder="姓名"/>
+                        <input class="arrow-square1" type="text" name="phone" placeholder="手机号"/>
+                        <span style="color:#a0a0a0;font-size:14px;padding:6px" class="fl">装修风格</span>
+
+
+                        <select class="arrow-square1 fl Style_select" name="style_name">
+                            <option value="">选择风格</option>
+                        </select>
+
+                        <input class="submit btn_plan" type="submit" value="获取方案"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="Introduce-pic fr"></div>
+    </div>
+</div>
+</div>
+<div class="z-intro">
+    {$pages}
+</div>
+{template "content","footer"}
+<script>
+    $('.Introduce-middle').eq(0).css({"margin-top":"0px"});
+
+
+    //ajax获取今日记录
+    var siteurl = 'http://www.jysgcd.com';
+//    var siteurl = '{siteurl($siteid)}';
+
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=get_today",
+        success:function(data){
+
+            console.log(data);
+            $('#num').html(data);
+        }
+    });
+
+    //ajax 加载小区
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=getcity",
+        success:function(data){
+            var length=data.length;
+            for(var i=0;i<length;i++){
+                var html = "<option id='city_id" + data[i].id + "'value='" + data[i].city_name + "' >" + data[i].city_name + "</option>";
+                $(".City_select").append(html);
+            }
+        }
+    });
+
+    //ajax 加载装修风格
+    $.ajax({
+
+        type :"POST",
+        dataType: "json",
+        url: siteurl+"/index.php?m=content&c=index&a=getstyle",
+        success:function(data){
+            var length=data.length;
+            for(var i=0;i<length;i++){
+                var html = "<option id='style_id" + data[i].id + "'value='" + data[i].style_name + "' >" + data[i].style_name + "</option>";
+                $(".Style_select").append(html);
+            }
+        }
+    });
+
+    $('.agree').click(function(){
+        var id= $(this).data('comboid');
+        var $this = $(this);
+        $.ajax({
+            type :"POST",
+            dataType: "json",
+            url: siteurl+"/index.php?m=content&c=index&a=ajax_agree",
+            data:{
+                combo_id:id
+            },
+            success:function(data){
+                alert(data.agree_num);
+                $this.siblings('.hind').html(data.agree_num);
+
+            }
+        });
+
+    });
+
+</script>

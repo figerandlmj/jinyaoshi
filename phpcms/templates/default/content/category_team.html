@@ -1,0 +1,46 @@
+{template "content","header"}
+
+<div class="video-content">
+    <p class="video-content-link">
+        <a href="javascript:;"><span>首页 > </span></a>{catpos($catid)} 列表
+    </p>
+</div>
+
+<!--内容-->
+<div style="width: 1100px;margin: 0 auto">
+
+    <div style="padding-top:15px;padding-left: 45px;padding-right: 45px;padding-bottom: 65px;">
+
+        <ul>
+            {pc:content action="lists" catid="$catid" num="5" page="$pages" order="listorder DESC,inputtime DESC" }
+            {loop $data $r}
+            <a href="{$r[url]}" style="color: #000000" target="_blank">
+                <li class="member-li">
+
+                    <div class="member-img fl">
+
+                        <img src="{$r[thumb]}" alt="">
+
+                    </div>
+                    <div class="member-info fr">
+
+                        <h3 class="mt40">{$r[title]}</h3>
+
+                        <div class="member-description">
+                            {$r[description]}
+                        </div>
+
+                    </div>
+
+                </li>
+            </a>
+            {/loop}
+            {/pc}
+        </ul>
+
+    </div>
+
+</div>
+<!--end内容-->
+
+{template "content","footer"}

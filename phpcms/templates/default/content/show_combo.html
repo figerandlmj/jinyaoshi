@@ -1,0 +1,103 @@
+{template "content","header"}
+
+<!--中间内容-->
+<div class="taocan-contact">
+	<div class="taocan-content">
+		<p class="video-content-link">
+			<a href="javascript:;"><span>首页 > </span></a>{catpos($catid)} 详情
+		</p>
+	</div>
+	<div class="taocan-center">
+		<img class="taocan-bg1"src="web/images/taocan-bg2.png" />
+	</div>
+</div>
+<!--箭头设计-->
+<div class="taocan-middle">
+	<div class="taocan-left fl">
+		<p class="taocan-left-title fl">{$price}元/<span class="font-size:36px;">m2</span></p>
+		<span class="taocan-left-span">一口价</span>
+		<div class="taocan-left-bottom">
+			<p class="taocan-left-bottom-span fl">设计风格：{$style}</p>
+			<p class="bottom-span2 fl">人群定位：{$dingwei}</p>
+		</div>
+	</div>
+	<div class="taocan-right fl">
+		<div class="taocan-right-box">
+			<p class="taocan-right-title">色彩方案</p>
+			{loop $color $pic_k $r}
+			{if $pic_k<8}
+			<img class="color" src="{$r[url]}" width="72" height="72" />
+			{/if}
+			{/loop}
+			<script>
+				$('.color').eq(0).css({"margin-left":"20px"});
+			</script>
+		</div>
+		<div class="taocan-right-box">
+			<p class="taocan-right-title">设计说明</p>
+			<p class="taocan-right-intro">{$description}</p>
+		</div>
+	</div>
+</div>
+<div class="div-box">
+	<div class="taocan-tab" id="content">
+		<ul class="taocan-tab-title">
+			<li class="num">客厅</li>
+			<li>卧室</li>
+			<li>厨房</li>
+			<li>卫生间</li>
+			<li>餐厅</li>
+			<li>儿童房</li>
+			<li>书房</li>
+			<li>阳台</li>
+		</ul>
+		<div class="all">
+			<div class="detail">
+				{$keting}
+			</div>
+			<div class="hide detail">
+				{$woshi}
+			</div>
+			<div class="hide detail" >
+				{$chufang}
+			</div>
+			<div class="hide detail">
+				{$weishengjian}
+			</div>
+			<div class="hide detail">
+				{$canting}
+			</div>
+			<div class="hide detail">
+				{$ertongfang}
+			</div>
+			<div class="hide detail">
+				{$shufang}
+			</div>
+			<div class="hide detail">
+				{$yangtai}
+			</div>
+		</div>
+	</div>
+</div>
+<!--悬浮-->
+<div class="float fr" >
+	<div class="float-top">
+		<img style="padding: 8px 10px;"src="web/images/float-top.png" />
+	</div>
+	<div class="float-bottom">
+		<img style="padding: 8px 10px;" src="web/images/float-middle.png"/>
+	</div>
+	<img class="float-last" src="web/images/bottom.png"/>
+</div>
+{template "content","footer"}
+<script>
+	$('#content li').click(function(){
+		var index= $(this).index();
+		$(this).siblings().removeClass("num");
+		$(this).addClass("num");
+		console.log(index);
+		$('.detail').eq(index).siblings().hide();
+		$('.detail').eq(index).show();
+
+	});
+</script>

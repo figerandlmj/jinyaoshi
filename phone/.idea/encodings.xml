@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/View/list.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/list_city.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/list_combo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/list_cooperate.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/list_team.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/match_combo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/search.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/show.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/show_combo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/View/show_video.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinyaoshi/config.php" charset="GBK" />
+  </component>
+</project>

@@ -1,0 +1,239 @@
+{template "mobile","header"}
+<!-- banner -->
+<div class="banner" style="width: 100%;margin-top: 48px;">
+    {pc:content action="lists" catid="9" num="5" siteid="$siteid" order="listorder ASC"}
+    <ul>
+        {loop $data $r}
+        <li>
+            <a href="{$r[url]}" style="width: 100%;height: 100%;display: block;position: relative;">
+                <img src="{$r[thumb]}" width="100%" height="auto" alt="{$r[title]}"/>
+                <a href="{$r[url]}">
+                <div class="more-btn"></div>
+                </a>
+            </a>
+        </li>
+        {/loop}
+        <!--<li>-->
+            <!--<a href="javascript:;" style="width: 100%;height: 100%;display: block;position: relative;">-->
+                <!--<img src="phone/images/banner1.jpg" width="100%" height="auto"/>-->
+                <!--<a href="">-->
+                <!--<div class="more-btn"></div>-->
+                <!--</a>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="javascript:;" style="width: 100%;height: 100%;display: block;position: relative;">-->
+                <!--<img src="phone/images/banner1.jpg" width="100%" height="auto"/>-->
+                <!--<a href="">-->
+                    <!--<div class="more-btn"></div>-->
+                <!--</a>-->
+            <!--</a>-->
+        <!--</li>-->
+    </ul>
+    {/pc}
+</div>
+<!-- end banner-->
+<!--快速通道-->
+<div class="channel">
+    <ul class="mui-flex">
+        <li class="channel-li cell" id="hengxin">
+            <a href="http://www.anhuihx.net/">
+                <img src="phone/images/hengxin.png" alt="" width="70">
+            </a>
+        </li>
+        <li class="channel-li cell" id="mail">
+            <a  href="http://www.anhuihx.com/mail">
+                <img src="phone/images/mail.png" alt="" width="70">
+            </a>
+        </li>
+        <li class="channel-li cell" id="supplier">
+            <a  href="http://www.anhuihx.com/scm">
+                <img src="phone/images/supplier.png" alt="" width="70">
+            </a>
+        </li>
+        <li class="channel-li cell" id="internet">
+            <a  href="http://www.anhuihx.com/oa">
+                <img src="phone/images/internet.png" alt="" width="70">
+            </a>
+        </li>
+
+
+    </ul>
+</div>
+<!-- end 快速通道-->
+<!-- 产品系列-->
+<div class="products">
+    <a href="{$CATEGORYS[16]['url']}">
+        <img src="phone/images/nav1.jpg" alt="" width="100%">
+    </a>
+    <a href="{$CATEGORYS[17]['url']}">
+        <img src="phone/images/nav2.jpg" alt="" width="100%">
+    </a>
+    <a href="{$CATEGORYS[11]['url']}">
+        <img src="phone/images/nav3.jpg" alt="" width="100%">
+    </a>
+</div>
+<!-- end 产品系列-->
+<!-- 关于我们-->
+<div class="about-wrap">
+    <div class="about-bg">
+        <div class="about-content">
+            <div class="about-title"></div>
+            <div class="about-text">
+                <p class="font-14">科技创新&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;精益求精</p>
+
+                <p class=" " style="margin-top: 7px;">
+                    恒信公司是一家处于国内领先，专业从事轻量化设计、开发、制造于一体的高新技术企业。同时恒信公司与多家重点高校进行产学研合作，涉及国内外先进技术经验，并将长期致力于节能环保的轻量化领域的研究。
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- 内容-->
+    <div class="about-intro-list">
+        <ul class="mui-flex">
+            <li class="about-li cell">
+                <a href="javascript:;">
+                    <img src="{$CATEGORYS[22]['image']}" alt="" width="80%" >
+                    <p>{$CATEGORYS[22]['catname']}</p>
+                </a>
+            </li>
+            <li class="about-li cell">
+                <a href="javascript:;">
+                    <img src="{$CATEGORYS[21]['image']}" alt="" width="80%" >
+                    <p>{$CATEGORYS[21]['catname']}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="about-intro-list" style="margin-top: 0;">
+        <ul class="mui-flex">
+            <li class="about-li cell">
+                <a href="javascript:;">
+                    <img src="{$CATEGORYS[20]['image']}" alt="" width="80%" >
+                    <p>{$CATEGORYS[20]['catname']}</p>
+                </a>
+            </li>
+            <li class="about-li cell">
+                <a href="javascript:;">
+                    <img src="{$CATEGORYS[19]['image']}" alt="" width="80%" >
+                    <p>{$CATEGORYS[19]['catname']}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- end 内容-->
+    <!--<div class="more-btn3-wrap ">-->
+        <!--<a href="{$CATEGORYS[33]['url']}">-->
+            <!--<div class="more-btn3 bg-c80b0b" style="background-color: red">查看更多</div>-->
+        <!--</a>-->
+    <!--</div>-->
+</div>
+<!-- end 关于我们-->
+<!-- 团队领袖-->
+<div class="leader-wrap">
+    <div class="leader-title"></div>
+    <div class="leader-list">
+        <a href="{$CATEGORYS[24]['url']}">
+            <div class="leader-info">
+                <img src="{$CATEGORYS[24]['image']}" alt="" width="35%">
+                <div class="infos">
+                    <p class="position-name">{$CATEGORYS[24]['catname']}</p>
+                    <div class="infos-text">{$CATEGORYS[24]['description']}</div>
+                </div>
+                <a href="{$CATEGORYS[24]['url']}">
+                    <div class="leader-btn"></div>
+                </a>
+            </div>
+        </a>
+        <a href="javascript:;">
+            <div class="leader-info" >
+                <img src="web/images/p1.jpg" alt="" width="35%">
+                <div class="infos">
+                    <p class="position-name">总经理 李建国</p>
+                </div>
+                <img src="web/images/mark.png" width="25%" alt="" style="position: absolute;bottom: 0;right: 0;">
+            </div>
+        </a>
+        <a href="javascript:;">
+            <div class="leader-info" >
+                <img src="web/images/p2.jpg" alt="" width="35%">
+                <div class="infos">
+                    <p class="position-name">财务总监 江中生</p>
+                </div>
+                <img src="web/images/mark.png" width="25%" alt="" style="position: absolute;bottom: 0;right: 0;">
+            </div>
+        </a>
+        <a href="javascript:;">
+            <div class="leader-info" >
+                <img src="web/images/p3.jpg" alt="" width="35%">
+                <div class="infos">
+                    <p class="position-name">技术总监 周超群</p>
+                </div>
+                <img src="web/images/mark.png" width="25%" alt="" style="position: absolute;bottom: 0;right: 0;">
+            </div>
+        </a>
+        <a href="javascript:;">
+            <div class="leader-info" >
+                <img src="web/images/p4.jpg" alt="" width="35%">
+                <div class="infos">
+                    <p class="position-name">总经理助理 钟鸣</p>
+                </div>
+                <img src="web/images/mark.png" width="25%" alt="" style="position: absolute;bottom: 0;right: 0;">
+            </div>
+        </a>
+
+    </div>
+</div>
+<!-- end 团队领袖-->
+<!-- 新闻动态-->
+<div class="leader-wrap" style="background-color: #4c4c4c;height: 500px">
+    <div class="news-title"></div>
+    <div class="news-list">
+        {pc:content action="lists" catid="12" num="5" order="inputtime DESC"}
+        <ul>
+            {loop $data $r}
+            <a href="{$r[url]}">
+                <li >
+                    <span class="news-point"></span>
+                    <p class="news-date">{date('Y-m-d',$r[inputtime])}</p>
+                    <p class="titles">{$r[title]}</p>
+                </li>
+            </a>
+            {/loop}
+        </ul>
+        {/pc}
+        <div class="more-btn3-wrap ">
+            <span class="news-img"></span>
+            <a href="{$CATEGORYS[12]['url']}">
+                <div class="more-btn3 bg-c80b0b" style="background-color: red;top: -10px;left: 0;margin-left: 93px">查看更多</div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- end 新闻动态-->
+<!-- 联系我们-->
+<div class="connect">
+    <div class="connect-list ">
+        <span class="address-icon"></span>
+        <div class="address-wrap">
+            <span>地址：</span><br/>
+            <span>芜湖市经济技术开发区凤鸣湖北路26号</span>
+        </div>
+    </div>
+    <div class="connect-list ">
+        <span class="address-icon tel-icon"></span>
+        <div class="address-wrap">
+            <span>电话：</span><br/>
+            <span>0553-5842035</span>
+        </div>
+    </div>
+    <div class="connect-list ">
+        <span class="address-icon fax-icon"></span>
+        <div class="address-wrap">
+            <span>传真：</span><br/>
+            <span>0553-5843473</span>
+        </div>
+    </div>
+</div>
+<!-- end 联系我们-->
+{template "mobile","footer"}

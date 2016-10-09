@@ -1,0 +1,59 @@
+{template "content","header"}
+<div class="video-content">
+    <p class="video-content-link">
+        <a href="javascript:;"><span>首页 > </span></a>{catpos($catid)} 列表</p>
+</div>
+<div class="News-contanier">
+    <div class="NewsPage-center">
+        {pc:content action="lists" num="10" catid="$catid" order="listorder DESC,inputtime DESC" page="$page"}
+        {loop $data $r}
+        <div class="NewsPage-box" style="margin-top: 20px;">
+            <div class="NewsDate fl">
+                <label class="NewsDate-one">{date('d',$r[inputtime])}</label>
+                <span class="NewsYear">{date('Y.m',$r[inputtime])}</span>
+            </div>
+            <div class="NewsPage-right fl">
+                <a href="{$r[url]}"><p class="News-right-title ">{$r[title]}</p>
+                    <div class="NewsPage-right-span">{$r[description]}</div></a>
+                <div class="News-icon">
+                    <a href="javascript:;"><img class="fl" src="web/images/icon5.png" />
+                    </a>
+                    <span style="padding-left:5px;">点击<span id="hits"></span><script language="JavaScript" src="{APP_PATH}api.php?op=count_list&id={$r[id]}&modelid={$modelid}"></script></span>
+                    <span class="fr"><a href="{$r[url]}">查看详情>></a></span>
+                </div>
+            </div>
+        </div>
+        {/loop}
+        {/pc}
+        <div class="Introduce-choice fl">
+            {$pages}
+            <!--<span class="Intro-span"> <<上一页 </span>-->
+            <!--<span class="Intro-short">1</span>-->
+            <!--<span class="Intro-short">2</span>-->
+            <!--<span class="Intro-short">3</span>-->
+            <!--<span class="Intro-short">4</span>-->
+            <!--<span class="Intro-short">5</span>-->
+            <!--<span class="Intro-short Intro-span">下一页>></span>-->
+        </div>
+    </div>
+</div>
+{template "content","footer"}
+<script>
+//    //ajax获取点击量
+//    var siteurl = '{siteurl($siteid)}';
+//    $.ajax({
+//
+//        type :"POST",
+//        dataType: "json",
+//        url: siteurl+"/index.php?m=content&c=index&a=get_today",
+//        success:function(data){
+//
+//
+//            $('#num').html(data);
+//        },
+//        error: function(err){
+//            alert("Ajax error!");
+//        }
+//    });
+
+</script>

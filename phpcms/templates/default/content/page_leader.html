@@ -1,0 +1,114 @@
+{template "content","header"}
+<style>
+    body{
+        background-color: #f4f4f4;
+    }
+</style>
+<!--min-banner-->
+<div class="min-banner"></div>
+<!-- end min banner-->
+<!--主内容-->
+<div class="w1100 news-main " style="min-height: 875px;">
+    <!-- left 部分-->
+    <div class="left-wrap fl">
+        <!-- category-->
+        <div class="category">
+            <ul>
+                {if $CATEGORYS[$parentid][catname]=="" }
+                <a><li class="category-focus">{$catname}11</li></a>
+                {else}
+                <a><li class="category-focus">{$CATEGORYS[$parentid][catname]}</li></a>
+                {/if}
+                {loop $arrchild_arr $cid}
+                <a href="{$CATEGORYS[$cid][url]}"><li class="{if $catid==$cid}category-focus{/if}">{$CATEGORYS[$cid][catname]}</li></a>
+                {/loop}
+
+            </ul>
+        </div>
+        <!-- end category-->
+        <!-- 联系我们-->
+        <div class="category-connect">
+            <div class="connect-title category-focus">
+                <span class="ml20">联系我们</span>
+            </div>
+            <div class="connect-text">
+                <div class="text-list">
+                    <span class="company-name fl">名称：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">芜湖恒信汽车内饰制造有限公司</span>
+                </div>
+                <div class="text-list mt10">
+                    <span class="company-name fl">地址：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">芜湖市经济开发区凤鸣湖北路26路</span>
+                </div>
+                <div class="text-list mt10" style="height: 16px;">
+                    <span class="company-name fl">电话：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">0553-5842035-8000</span>
+                </div>
+                <div class="text-list mt10" style="height: 16px;">
+                    <span class="company-name fl">传真：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">0553-5843473</span>
+                </div>
+                <div class="text-list mt10" style="height: 16px;">
+                    <span class="company-name fl">邮编：</span>
+                    <span class="fl" style="width: 123px;height: 100%;">241009</span>
+                </div>
+            </div>
+        </div>
+        <!-- end 联系我们-->
+        <!-- 快速通道-->
+        <div class="channel-category">
+            <a href="http://www.anhuihx.com/scm" class="channel-list">
+                <div class="channel-category-list bg-white">
+                    <span class="car-icon"></span>
+                    <span class="channel-name font-989898">供应商入口</span>
+                </div>
+            </a>
+            <a href="http://www.anhuihx.com/mail" class="channel-list">
+                <div class="channel-category-list bg-white">
+                    <span class="car-icon mail-icon"></span>
+                    <span class="channel-name font-989898">企业邮箱</span>
+                </div>
+            </a>
+            <a href="http://www.anhuihx.com/oa" class="channel-list">
+                <div class="channel-category-list bg-white">
+                    <span class="car-icon e-icon"></span>
+                    <span class="channel-name font-989898">网络系统</span>
+                </div>
+            </a>
+            <a href="http://www.anhuihx.net/" class="channel-list">
+                <div class="channel-category-list bg-white">
+                    <span class="car-icon hx-icon"></span>
+                    <span class="channel-name font-989898">合肥恒信</span>
+                </div>
+            </a>
+        </div>
+        <!-- end 快速通道-->
+    </div>
+    <!-- end left部分-->
+    <!-- right 部分-->
+    <div class="right-wrap fr bg-white leaders-wrap">
+        <div class="right-content">
+            <!-- index-->
+            <div class="index">
+                <span>您的位置:</span>
+                <a href="">首页</a>
+                <a ><span> >></span>{catpos($catid)}介绍</a>
+            </div>
+            <!-- end index -->
+            <!-- 文章内容-->
+            <div class="leaders" style="min-height: 520px;">
+                <div class="articles-left fl" >
+                    <img src="{$image}" alt="" width="205" style="max-height: 220px" >
+                    <p class="leader-name">{$catname}</p>
+                </div>
+                <div class="leaders-text fr">
+                    <!--<img src="web/images/logo-small.png" alt="" width="159" height="22"><br/>-->
+                    {$content}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end right 部分-->
+</div>
+<!--end 主内容-->
+{template "content","footer"}

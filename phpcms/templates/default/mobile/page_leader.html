@@ -1,0 +1,22 @@
+{template "mobile","header_page"}
+<div class="content" style="background-color: #ebebeb">
+    <p class="detail-title">{$title}</p>
+    <!--<div class="copyfrom">-->
+        <!--<img src="phone/images/clock.png" alt="" width="11">-->
+        <!--{date('H:m:s Y-m-d',$r[inputtime])}-->
+        <!--<span class="fr">编辑：{$username}</span>-->
+    <!--</div>-->
+    <div class="content" style="background-color: #ebebeb;margin-top: 1.8%;">
+        {if $image==""}
+        <img src="phone/images/default-img.jpg" alt="" width="100%">
+        {else}
+        <img src="{$image}" alt="" width="100%">
+        {/if}
+
+        <p class="description">{$description}</p>
+    </div>
+    <div class="details">
+        {$content}
+    </div>
+</div>
+{template "mobile","footer"}
